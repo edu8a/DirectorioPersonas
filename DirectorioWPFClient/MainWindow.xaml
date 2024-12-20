@@ -1,0 +1,108 @@
+﻿<Window x:Class="DirectorioWPFClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Directorio Personas" Height="600" Width="800">
+    <Grid Margin="10">
+        <TabControl x:Name="MainTabControl">
+            
+            <TabItem Header="Personas">
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                   
+                    <StackPanel Orientation="Vertical" Margin="0,0,0,10" Grid.Row="0">
+                        <StackPanel Orientation="Horizontal" Margin="0,5">
+                            <TextBlock Text="Nombre:" Width="150" VerticalAlignment="Center"/>
+                            <TextBox x:Name="NombreTextBox" Width="400" Height="25" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,5">
+                            <TextBlock Text="Apellido Paterno:" Width="150" VerticalAlignment="Center"/>
+                            <TextBox x:Name="ApellidoPaternoTextBox" Width="400" Height="25" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,5">
+                            <TextBlock Text="Apellido Materno:" Width="150" VerticalAlignment="Center"/>
+                            <TextBox x:Name="ApellidoMaternoTextBox" Width="400" Height="25" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,5">
+                            <TextBlock Text="Identificación:" Width="150" VerticalAlignment="Center"/>
+                            <TextBox x:Name="IdentificacionTextBox" Width="400" Height="25" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,10">
+                            <Button Content="Crear" Width="100" Height="30" Margin="5" Click="CrearButton_Click"/>
+                            <Button Content="Eliminar" Width="100" Height="30" Margin="5" Click="EliminarButton_Click"/>
+                            <Button Content="Crear Factura" Width="120" Height="30" Margin="5" Click="CambiarAPestañaFacturas"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <TextBlock Text="Buscar Persona por Identificación:" Width="200" VerticalAlignment="Center"/>
+                            <TextBox x:Name="BuscarIdentificacionTextBox" Width="200" Height="25"/>
+                            <Button Content="Buscar" Width="100" Height="25" Margin="5" Click="BuscarPersonaButton_Click"/>
+                        </StackPanel>
+
+                        
+                        <StackPanel Margin="0,10,0,0">
+                            <TextBlock Text="Información de la Persona:" FontWeight="Bold" Margin="0,10,0,5"/>
+                            <TextBlock x:Name="PersonaInfoTextBlock" Text="No se ha realizado ninguna búsqueda." TextWrapping="Wrap" Width="400"/>
+                        </StackPanel>
+
+
+                    </StackPanel>
+
+                    <DataGrid x:Name="PersonasDataGrid"
+                              Grid.Row="1" AutoGenerateColumns="False"
+                              Margin="0,10,0,0" Height="300">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                            <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="150"/>
+                            <DataGridTextColumn Header="Apellido Paterno" Binding="{Binding ApellidoPaterno}" Width="150"/>
+                            <DataGridTextColumn Header="Apellido Materno" Binding="{Binding ApellidoMaterno}" Width="150"/>
+                            <DataGridTextColumn Header="Identificación" Binding="{Binding Identificacion}" Width="150"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+           
+            <TabItem Header="Crear Factura">
+                <StackPanel Margin="10">
+                    <TextBlock Text="Crear Factura" FontSize="16" FontWeight="Bold" Margin="0,10,0,5"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                        <TextBlock Text="Persona ID:" Width="100" VerticalAlignment="Center"/>
+                        <TextBox x:Name="PersonaIdTextBox" Width="200" Height="25"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                        <TextBlock Text="Fecha:" Width="100" VerticalAlignment="Center"/>
+                        <DatePicker x:Name="FechaDatePicker" Width="200" Height="25"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                        <TextBlock Text="Monto:" Width="100" VerticalAlignment="Center"/>
+                        <TextBox x:Name="MontoTextBox" Width="200" Height="25"/>
+                    </StackPanel>
+
+                    <Button Content="Crear Factura" Width="150" Margin="0,10,0,0" Click="CrearFacturaButton_Click"/>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                        <TextBlock Text="Buscar Facturas por Persona ID:" Width="180" VerticalAlignment="Center"/>
+                        <TextBox x:Name="BuscarPersonaIdTextBox" Width="200" Height="25"/>
+                        <Button Content="Buscar" Width="100" Height="25" Margin="5" Click="BuscarFacturasPorPersonaButton_Click"/>
+                    </StackPanel>
+
+                    <DataGrid x:Name="FacturasDataGrid"
+                              AutoGenerateColumns="False"
+                              Margin="0,10,0,0" Height="200">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                            <DataGridTextColumn Header="Persona ID" Binding="{Binding PersonaId}" Width="100"/>
+                            <DataGridTextColumn Header="Fecha" Binding="{Binding Fecha}" Width="150"/>
+                            <DataGridTextColumn Header="Monto" Binding="{Binding Monto}" Width="100"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

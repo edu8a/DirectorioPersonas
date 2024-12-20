@@ -1,0 +1,15 @@
+
+# Archivos y carpetas generados por Visual Studio
+bin/
+obj/
+.vs/
+*.user
+*.suo
+
+# Bases de datos locales
+*.db
+*.db-wal
+*.db-shm
+
+# Archivos temporales
+*.log
